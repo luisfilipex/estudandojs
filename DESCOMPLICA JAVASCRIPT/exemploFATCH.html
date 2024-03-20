@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de API com json</title>
+    <style>
+        .produto {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .produto img {
+            display: block;
+            margin: 0 auto;
+            background-color: #ddd;
+        }
+
+        .produto p {
+            text-align: center;
+            background-color: #e0e0e0;
+            margin: 5px 0;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usando api e jason</h1>
+    <div id="carrinho-container"></div>
+
+</body>
+<script>
+//buscando a api e tratamento dos dados
+fetch('https://fakestoreapi.com/products?limit=5')
+    .then(response => response.json())
+    .then(data => {
+        preencherCarrinho(data);
+    })
+    .catch(error => {
+        console.log("Ocorreu um erro.", error);
+    });
+//logica para pegar a api e mostrar na tela
+function preencherCarrinho(produtos) {
+    const carrinhoContainer = document.getElementById('carrinho-container');
+    produtos.forEach(produto => {
+        const divProduto = document.createElement('div');
+        divProduto.classList.add('produto');
+
+        //aqui mostra como vai ser a imagem do produto
+        const imagem = document.createElement('img');
+        imagem.src = produto.image;
+        imagem.width = 200;
+        imagem.height = 300;
+        divProduto.appendChild(imagem);
+
+        //aqui eo criacao do nome do produto
+        const nome = document.createElement('p');
+        nome.textContent = produto.title;
+        divProduto.appendChild(nome);
+
+        // aqui mostra o preço do produto
+        const preco = document.createElement('p');
+        preco.textContent = ` R$ ${produto.price}`;
+        divProduto.appendChild(preco);
+
+        carrinhoContainer.appendChild(divProduto);
+    });
+}
+
+
+</script>
+</html>
