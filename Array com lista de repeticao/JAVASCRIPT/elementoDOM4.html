@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seletor do DOM</title>
+</head>
+<body>
+    
+    <h1>Seletor do DOM</h1>
+    <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>NodeJS</li>
+    </ul>
+
+    <div id="conteudo" class="mensagem">
+    </div>
+
+    <div name="divconteudo" class="mensagem">
+    </div>
+
+    <div name="divconteudo" class="mensagem">
+    </div>
+
+    <div name="divconteudo" class="mensagem">
+    </div>
+
+    <span id="novospan" class="novo">
+        texto no span
+    </span>
+
+    <div class="mensagem">
+
+    </div>
+
+
+</body>
+<script>
+
+//cor do texto
+elemento0 = document.getElementsByTagName('li')[0]
+elemento0.style.color = 'blue'
+
+//cor do fundo
+elemento1 = document.getElementsByTagName('li')[1]
+elemento1.style.background = 'red'
+
+
+//trocando nome do li
+elemento2 = document.getElementsByTagName('li')[2];
+elemento2.innerText = "Spring boot"
+
+//adiconar texto na div
+elementoDiv = document.getElementById("conteudo");
+elementoDiv.innerHTML = "<p> Estou testando</p>"
+
+//usando name
+elementoDivName = document.getElementsByName("divconteudo")[0];
+elementoDivName.style.color = "blue"
+elementoDivName.innerText = "Estou colocando um texto"
+
+
+elementoDivName = document.getElementsByClassName("mensagem")[2];
+elementoDivName.style.color = "red"
+elementoDivName.innerText = "Estou colocando um texto"
+
+
+//seletor css
+elementoSpamClass = document.querySelector("span.novo")
+elementoSpamClass.style.color = "green";
+
+//pegando todas as classes com mesmo nome
+elementoSeletor = document.querySelectorAll(".mensagem")[4];
+elementoSeletor.innerHTML = "<p>Texto incluido</p>"
+
+</script>
+</html>
